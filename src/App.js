@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useCallback } from "react";
+import SplashScreen from "./components/Splashscreen"; // Adjust the path as necessary
 
-function App() {
+const App = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleComplete = useCallback(() => {
+    setIsLoaded(true);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!isLoaded ? (
+        <SplashScreen onComplete={handleComplete} />
+      ) : (
+        <div className="homepage"> {/* Your homepage content here */} </div>
+      )}
+    </>
   );
-}
+};
 
 export default App;

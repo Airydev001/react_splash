@@ -1,13 +1,133 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Fullscreen splash background */
+.splash-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: white; /* Dark background for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Keyhole Intro Animation */
+.intro-keyhole {
+  width: 100px;
+  opacity: 0;
+  animation: fadeInScale 2s ease-in-out forwards, neonGlow 1.5s infinite alternate;
+}
+
+/* Logo appears after the keyhole */
+.intro-logo {
+  width: 400px;
+  margin-top: 20px;
+  opacity: 0;
+  animation: slideIn 2s ease-in-out forwards;
+}
+
+/* Looping Animation (Neon Pulse Effect) */
+.loop-keyhole {
+  width: 200px;
+  animation: neonPulse 1.5s infinite alternate, spinShrink 4s ease-in-out infinite;
+}
+
+.loop-logo {
+  width: 400px;
+  animation: neonPulse 2s infinite alternate, floatingEffect 3s ease-in-out infinite;
+}
+
+/* Keyhole appears smoothly with rotation and shrink effect */
+@keyframes fadeInScale {
+  0% {
+    transform: scale(1.2) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Spinner Rotation & Shrinking Effect */
+@keyframes spinShrink {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.7) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.3) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Neon Glow Effect */
+@keyframes neonGlow {
+  0% {
+    filter: brightness(1) blur(1px);
+    
+  }
+  100% {
+    filter: brightness(1.5) blur(3px);
+    box-shadow: 0 0 15px rgba(255, 223, 0, 0.7), 0 0 30px rgba(255, 223, 0, 0.5);
+  }
+}
+
+/* Pulse Effect */
+@keyframes neonPulse {
+  0% {
+    transform: scale(1);
+    filter: brightness(1) blur(0px);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.5) blur(2px);
+    box-shadow: 0 0 10px rgba(0, 255, 60, 0.8), 0 0 20px rgba(0, 255, 128, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(0.8) blur(0px);
+  }
+}
+
+/* Slide-in animation for the logo */
+@keyframes slideIn {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Floating animation for subtle motion */
+@keyframes floatingEffect {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
